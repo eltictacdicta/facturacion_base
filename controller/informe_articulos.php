@@ -220,8 +220,12 @@ class informe_articulos extends fbase_controller
         while (count($resultados) > 0) {
             foreach ($resultados as $res) {
                 $rows[] = array(
-                    $res['codalmacen'], $res['referencia'], fs_fix_html($res['descripcion']),
-                    $res['cantidad'], $res['stockmin'], $res['stockmax']
+                    $res['codalmacen'],
+                    $res['referencia'],
+                    fs_fix_html($res['descripcion']),
+                    $res['cantidad'],
+                    $res['stockmin'],
+                    $res['stockmax']
                 );
                 $offset++;
             }
@@ -290,7 +294,9 @@ class informe_articulos extends fbase_controller
             $stats['con_stock'] = intval($aux[0]['stock']);
             $stats['bloqueados'] = intval($aux[0]['bloq']);
             $stats['publicos'] = intval($aux[0]['publi']);
-            $stats['factualizado'] = Date('d-m-Y', strtotime($aux[0]['factualizado']));
+            if ($aux[0]['factualizado']) {
+                $stats['factualizado'] = Date('d-m-Y', strtotime($aux[0]['factualizado']));
+            }
         }
 
         return $stats;
@@ -320,7 +326,7 @@ class informe_articulos extends fbase_controller
                             'articulo' => $art0,
                             'unidades' => floatval($l['unidades']),
                             'total' => $this->euro_convert(floatval($l['total'])),
-                            'beneficio' => $this->euro_convert(floatval($l['total'])) - ( floatval($l['unidades']) * $art0->preciocoste() )
+                            'beneficio' => $this->euro_convert(floatval($l['total'])) - (floatval($l['unidades']) * $art0->preciocoste())
                         );
                     }
                 }
@@ -664,9 +670,15 @@ class informe_articulos extends fbase_controller
                 }
 
                 $rows[] = array(
-                    $value['referencia'], $value['codalmacen'], $value['origen'],
-                    fs_fix_html($value['clipro']), $value['movimiento'], $value['precio'],
-                    $value['dto'], $value['final'], $value['fecha']
+                    $value['referencia'],
+                    $value['codalmacen'],
+                    $value['origen'],
+                    fs_fix_html($value['clipro']),
+                    $value['movimiento'],
+                    $value['precio'],
+                    $value['dto'],
+                    $value['final'],
+                    $value['fecha']
                 );
             }
 
