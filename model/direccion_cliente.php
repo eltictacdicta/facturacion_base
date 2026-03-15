@@ -17,10 +17,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-require_once 'plugins/facturacion_base/model/core/direccion_cliente.php';
+require_once 'plugins/clientes_core/model/core/direccion_cliente.php';
 
 /**
  * Una dirección de un cliente. Puede tener varias.
+ * Delegado a clientes_core.
  * 
  * @author Carlos García Gómez <neorazorx@gmail.com>
  */

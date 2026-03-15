@@ -17,10 +17,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-require_once 'plugins/facturacion_base/model/core/grupo_clientes.php';
+require_once 'plugins/clientes_core/model/core/grupo_clientes.php';
 
 /**
  * Un grupo de clientes, que puede estar asociado a una tarifa.
+ * Delegado a clientes_core.
  * 
  * @author Carlos García Gómez <neorazorx@gmail.com>
  */
