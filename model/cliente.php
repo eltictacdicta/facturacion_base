@@ -18,6 +18,7 @@
  */
 
 require_once 'plugins/clientes_core/model/core/cliente.php';
+require_once 'plugins/clientes_facturacion/model/cliente_facturacion.php';
 
 /**
  * El cliente. Puede tener una o varias direcciones y subcuentas asociadas.
@@ -29,7 +30,6 @@ require_once 'plugins/clientes_core/model/core/cliente.php';
  */
 class cliente extends FSFramework\model\cliente
 {
-
     /**
      * Devuelve un array con todas las subcuentas asociadas al cliente.
      * Una para cada ejercicio.
@@ -134,5 +134,12 @@ class cliente extends FSFramework\model\cliente
             $this->db->exec("UPDATE " . $this->table_name . " SET codproveedor = null WHERE codproveedor IS NOT NULL"
                 . " AND codproveedor NOT IN (SELECT codproveedor FROM proveedores);");
         }
+
+        $extension = new \cliente_facturacion();
+        if ($this->db->table_exists($extension->table_name())) {
+            $this->db->exec("UPDATE " . $extension->table_name() . " SET codproveedor = null WHERE codproveedor IS NOT NULL"
+                . " AND codproveedor NOT IN (SELECT codproveedor FROM proveedores);");
+        }
     }
+
 }

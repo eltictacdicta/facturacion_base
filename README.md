@@ -1,3 +1,3 @@
-# Ultima version de facturacion_base compatible con FSFramework y Facturascript 2017 
+# fork de facturacion_base compatible con FSFramework
 Este repositorio es como copia de seguridad para futuras implementaciones en FSFramework y pruebas de funcionamiento.
-Este codigo esta desfasado si usas Facturascript para tu empresa te recomiendo te recomiendo que descargues la ultima versión de facturascript en https://facturascripts.com/
+Aunque este codigo esta actualizado y adapatado a FSFramework, si usas Facturascript para tu empresa te recomiendo te recomiendo que descargues la ultima versión de facturascript en https://facturascripts.com/ , a no ser que quieras continuar el desarrollo de este plugin como base de futuro sistema de facturación, aunque este codigo no esta muy texteado y necesita revisión por quien lo use.

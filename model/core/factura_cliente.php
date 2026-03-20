@@ -116,7 +116,7 @@ class factura_cliente extends \fs_model
                 . " AND codejercicio = " . $this->var2str($this->codejercicio) . ";";
 
             $data = $this->db->select($sql);
-            if ($data && \strtotime($data[0]['fecha']) > \strtotime($fecha)) {
+            if ($data && !empty($data[0]['fecha']) && \strtotime($data[0]['fecha']) > \strtotime($fecha)) {
                 $fecha_old = $fecha;
                 $fecha = date('d-m-Y', \strtotime($data[0]['fecha']));
 
@@ -132,7 +132,7 @@ class factura_cliente extends \fs_model
                 . " AND fecha = " . $this->var2str($fecha) . ";";
 
             $data2 = $this->db->select($sql);
-            if ($data2 && (\strtotime($data2[0]['hora']) > \strtotime($hora) || $cambio)) {
+            if ($data2 && !empty($data2[0]['hora']) && (\strtotime($data2[0]['hora']) > \strtotime($hora) || $cambio)) {
                 $hora = date('H:i:s', \strtotime($data2[0]['hora']));
                 $cambio = TRUE;
             }
