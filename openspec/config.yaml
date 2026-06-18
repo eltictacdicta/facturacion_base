@@ -1,0 +1,58 @@
+schema: spec-driven
+
+project: facturacion_base
+artifact_store: openspec
+
+context: |
+  FSFramework plugin (legacy FacturaScripts fork).
+  Stack: PHP 8.2+ (hosted), Symfony 7.4 / Twig 3 / PHPUnit 11 (core).
+  Architecture: Legacy plugin with controller/, model/, view/; no PSR-4 src/.
+  Dependencies: catalogo_core, business_data, clientes_core, clientes_facturacion.
+  No local composer.json, phpunit.xml, or tests/ directory.
+
+rules:
+  proposal:
+    - Include rollback plan for risky changes
+    - Consider impact on dependent plugins (clientes_facturacion, etc.)
+  specs:
+    - Use Given/When/Then for scenarios
+    - Use RFC 2119 keywords (MUST, SHALL, SHOULD, MAY)
+  design:
+    - Include sequence diagrams for complex accounting flows
+    - Document architecture decisions with rationale
+  tasks:
+    - Group by phase, use hierarchical numbering
+    - Keep tasks completable in one session
+  apply:
+    follow_existing_patterns: true
+    tdd: false
+    test_command: ""
+  verify:
+    test_command: "ddev exec php vendor/bin/phpunit --filter facturacion_base"
+    build_command: ""
+    coverage_threshold: 0
+  archive:
+    - Warn before merging destructive deltas
+
+testing:
+  strict_tdd: false
+  detected: "2026-06-06"
+  capabilities:
+    runner:
+      command: "ddev exec php vendor/bin/phpunit"
+      framework: PHPUnit 11 (via core)
+    layers:
+      unit: false
+      integration: false
+      e2e: false
+    coverage:
+      available: false
+      command: ""
+    quality:
+      linter: false
+      type_checker: false
+      formatter: false
+  notes: |
+    Plugin has no local test infrastructure (no tests/, no phpunit.xml).
+    To add tests, create tests/ and a phpunit.xml referencing the core bootstrap.
+    The core root phpunit.xml auto-discovers plugins/*/tests/**/*Test.php.

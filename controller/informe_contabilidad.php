@@ -318,7 +318,7 @@ class informe_contabilidad extends fs_controller
      * @param type $fechafin
      * @param type $excluir
      */
-    public function sumas_y_saldos(&$pdf_doc, &$eje, $tipo = 3, $titulo, $fechaini, $fechafin, $excluir = FALSE)
+    public function sumas_y_saldos(&$pdf_doc, &$eje, $titulo, $fechaini, $fechafin, $excluir = FALSE, $tipo = 3)
     {
         $ge0 = new grupo_epigrafes();
         $epi0 = new epigrafe();

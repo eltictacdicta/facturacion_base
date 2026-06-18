@@ -19,8 +19,6 @@
 
 require_once 'plugins/facturacion_base/extras/fbase_controller.php';
 require_once 'plugins/facturacion_base/extras/fs_pdf.php';
-require_once 'extras/phpmailer/class.phpmailer.php';
-require_once 'extras/phpmailer/class.smtp.php';
 
 /**
  * Esta clase agrupa los procedimientos de imprimir/enviar albaranes de proveedor
