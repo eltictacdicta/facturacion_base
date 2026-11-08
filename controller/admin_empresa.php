@@ -16,8 +16,6 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-require_once 'extras/phpmailer/class.phpmailer.php';
-require_once 'extras/phpmailer/class.smtp.php';
 
 class admin_empresa extends fs_controller
 {
